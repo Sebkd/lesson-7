@@ -52,7 +52,7 @@ class Cell:
     def __str__(self):
         self.view.clear()
         for count in range(self.numbers):
-            (self.view).append('*')
+            self.view.append('*')
         return ''.join(self.view)
 
     def make_order(self, cell_in_row):
