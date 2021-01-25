@@ -12,12 +12,19 @@
 
 from abc import ABC, abstractmethod
 
+
 class Wear(ABC):
     def __init__(self):
         pass
 
     @abstractmethod
     def consumption(self):
+        pass
+
+    @abstractmethod
+    def __add__(self, other):
+        pass
+
 
 class Coat(Wear):
     def __init__(self, size):
@@ -26,8 +33,11 @@ class Coat(Wear):
 
     @property
     def consumption(self):
-        return
+        self._value = (self._size_of_coat / 6.5) + 0.5
+        return self._value
 
+    def __add__(self, other):
+        return (self._value + other._value)
 
 
 class Suit(Wear):
@@ -35,5 +45,19 @@ class Suit(Wear):
         super().__init__()
         self._size_of_suit = size
 
+    @property
+    def consumption(self):
+        self._value = (2 * self._size_of_suit + 0.3)
+        return self._value
+
+    def __add__(self, other):
+        return (self._value + other._value)
 
 
+suit = Suit(35)
+coat = Coat(42)
+
+print(round(suit.consumption, 2))
+print(round(coat.consumption, 2))
+
+print(round((suit + coat), 2))
