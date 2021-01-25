@@ -10,3 +10,30 @@
 реализовать абстрактные классы для основных классов проекта, проверить на практике работу декоратора @property.
 '''
 
+from abc import ABC, abstractmethod
+
+class Wear(ABC):
+    def __init__(self):
+        pass
+
+    @abstractmethod
+    def consumption(self):
+
+class Coat(Wear):
+    def __init__(self, size):
+        super().__init__()
+        self._size_of_coat = size
+
+    @property
+    def consumption(self):
+        return
+
+
+
+class Suit(Wear):
+    def __init__(self, size):
+        super().__init__()
+        self._size_of_suit = size
+
+
+
